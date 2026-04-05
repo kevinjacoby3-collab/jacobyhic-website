@@ -8,6 +8,16 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 
 TOP_MIN = (
+    ".top-bar{font-size:0.85rem;padding:0;border-bottom:1px solid #2A4545}"
+    ".top-bar-split{display:flex;width:100%;align-items:stretch;flex-wrap:wrap}"
+    ".top-bar-left{flex:1 1 50%;min-width:min(100%,280px);background:#3D5A5A;color:#FFFFFF;padding:0.65rem 1.25rem;display:flex;align-items:center;justify-content:center;text-align:center;line-height:1.5}"
+    ".top-bar-left a{color:#FFFFFF;font-weight:600;text-decoration:underline}"
+    ".top-bar-left a:hover{color:#E8F0ED}"
+    ".top-bar-right{flex:1 1 50%;min-width:min(100%,280px);background:#E8F0ED;color:#60A18B;padding:0.65rem 1.25rem;display:flex;align-items:center;justify-content:center;text-align:center;line-height:1.5}"
+    ".top-bar .serving-text{color:#60A18B;font-weight:700}"
+)
+
+TOP_MIN_OLD_LIGHT = (
     ".top-bar{background:#E8F0ED;color:#4A4845;font-size:0.85rem;padding:0.6rem 0;border-bottom:1px solid #D1CFC9}"
     ".top-bar .container{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem}"
     ".top-bar a{color:#60A18B;font-weight:600}.top-bar a:hover{color:#4E8A75}"
@@ -143,13 +153,36 @@ def footer_html(img_prefix: str) -> str:
 </footer>"""
 
 
-def serving_html(t: str) -> str:
-    return re.sub(
-        r"<span>Serving[^<]*</span>(?=\s*<span>Call)",
-        '<span class="serving-text">Serving West Chester & Surrounding Areas</span>',
+TOP_BAR_HTML_MIN = (
+    '<div class="top-bar"><div class="top-bar-split"><div class="top-bar-left">'
+    "Contact Us Today! Call us <a href=\"tel:+14849479097\">(484) 947-9097</a> or "
+    '<a href="mailto:jacobyhomeimprovements@gmail.com">email us</a>.</div>'
+    '<div class="top-bar-right"><span class="serving-text">Serving West Chester & Surrounding Areas</span></div></div></div>'
+)
+
+TOP_BAR_HTML_PRETTY = """  <div class="top-bar">
+    <div class="top-bar-split">
+      <div class="top-bar-left">
+        Contact Us Today! Call us <a href="tel:+14849479097">(484) 947-9097</a> or <a href="mailto:jacobyhomeimprovements@gmail.com">email us</a>.
+      </div>
+      <div class="top-bar-right">
+        <span class="serving-text">Serving West Chester & Surrounding Areas</span>
+      </div>
+    </div>
+  </div>"""
+
+
+def serving_html(t: str, *, pretty: bool = False) -> str:
+    if "top-bar-split" in t:
+        return t
+    repl = TOP_BAR_HTML_PRETTY if pretty else TOP_BAR_HTML_MIN
+    t = re.sub(
+        r'<div class="top-bar">\s*<div class="container">[\s\S]*?</div>\s*</div>',
+        repl,
         t,
         count=1,
     )
+    return t
 
 
 def nav_text(t: str) -> str:
@@ -235,6 +268,8 @@ def patch_css_common(t: str) -> str:
             t,
             count=1,
         )
+    if TOP_MIN_OLD_LIGHT in t:
+        t = t.replace(TOP_MIN_OLD_LIGHT, TOP_MIN)
     return t
 
 
@@ -243,7 +278,8 @@ def process_file(path: Path) -> None:
     rel = path.relative_to(ROOT)
     img_p = "../" if rel.parts[0] in ("blog", "areas") else ""
 
-    t = serving_html(t)
+    pretty_top = path.parent == ROOT and path.name in ("index.html", "kitchen-remodeling.html")
+    t = serving_html(t, pretty=pretty_top)
     t = nav_text(t)
     t = re.sub(r"<footer>[\s\S]*?</footer>", footer_html(img_p), t, count=1)
     t = insert_fb(t)
@@ -260,22 +296,52 @@ def patch_index_css(t: str) -> str:
     """index.html has a different CSS section order (trust bar before footer rules)."""
     top_new = """    /* ===== TOP BAR ===== */
     .top-bar {
-      background: #E8F0ED;
-      color: #4A4845;
       font-size: 0.85rem;
-      padding: 0.6rem 0;
-      border-bottom: 1px solid #D1CFC9;
+      padding: 0;
+      border-bottom: 1px solid #2A4545;
     }
-    .top-bar .container {
+    .top-bar-split {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
+      width: 100%;
+      align-items: stretch;
       flex-wrap: wrap;
-      gap: 0.5rem;
     }
-    .top-bar a { color: #60A18B; font-weight: 600; }
-    .top-bar a:hover { color: #4E8A75; }
-    .top-bar .serving-text { color: #60A18B; font-weight: 700; }
+    .top-bar-left {
+      flex: 1 1 50%;
+      min-width: min(100%, 280px);
+      background: #3D5A5A;
+      color: #FFFFFF;
+      padding: 0.65rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      line-height: 1.5;
+    }
+    .top-bar-left a {
+      color: #FFFFFF;
+      font-weight: 600;
+      text-decoration: underline;
+    }
+    .top-bar-left a:hover {
+      color: #E8F0ED;
+    }
+    .top-bar-right {
+      flex: 1 1 50%;
+      min-width: min(100%, 280px);
+      background: #E8F0ED;
+      color: #60A18B;
+      padding: 0.65rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      line-height: 1.5;
+    }
+    .top-bar .serving-text {
+      color: #60A18B;
+      font-weight: 700;
+    }
 """
     nav_new = """    /* ===== NAV ===== */
     nav {
@@ -536,7 +602,7 @@ def patch_index_css(t: str) -> str:
     }
 """
     t = re.sub(
-        r"/\* ===== TOP BAR ===== \*/\s*\.top-bar\s*\{[\s\S]*?\.top-bar a:hover\s*\{[^}]+\}\s*",
+        r"/\* ===== TOP BAR ===== \*/[\s\S]*?(?=\s*/\* ===== NAV ===== \*/)",
         top_new,
         t,
         count=1,
