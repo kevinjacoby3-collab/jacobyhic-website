@@ -250,82 +250,6 @@
     .nav-dropdown-menu a:hover { background: #F7F7F5; color: #60A18B; }
     .nav-mobile-menu a.active { color: #60A18B; background: #F7F7F5; }
 
-
-
-
-    /* ===== HERO ===== */
-    .hero {
-      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-dark) 100%);
-      padding: 5rem 0 4rem;
-      position: relative;
-      overflow: hidden;
-    }
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      right: -20%;
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%);
-      border-radius: 50%;
-    }
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: center;
-    }
-    .hero-badge {
-      display: inline-block;
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--gold);
-      border: 1px solid rgba(201,168,76,0.3);
-      padding: 0.35rem 1rem;
-      border-radius: 100px;
-      margin-bottom: 1.5rem;
-    }
-    .hero h1 {
-      font-family: var(--font-display);
-      font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 700;
-      color: #fff;
-      line-height: 1.15;
-      margin-bottom: 1.25rem;
-    }
-    .hero h1 span { color: var(--gold); }
-    .hero p {
-      font-size: 1.1rem;
-      color: rgba(255,255,255,0.7);
-      line-height: 1.75;
-      margin-bottom: 2rem;
-      max-width: 520px;
-    }
-    .hero-actions {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-    .hero-img {
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 25px 60px rgba(0,0,0,0.3);
-    }
-    .hero-img img {
-      width: 100%;
-      height: 400px;
-      object-fit: cover;
-    }
-
-    @media (max-width: 768px) {
-      .hero { padding: 3rem 0; }
-      .hero-grid { grid-template-columns: 1fr; gap: 2rem; }
-      .hero-img img { height: 280px; }
-    }
-
     /* ===== BUTTONS ===== */
     .btn {
       display: inline-block;
@@ -346,15 +270,6 @@
       background: var(--gold-light);
       transform: translateY(-2px);
       box-shadow: 0 4px 15px rgba(201,168,76,0.3);
-    }
-    .btn-outline {
-      background: transparent;
-      color: #fff;
-      border: 2px solid rgba(255,255,255,0.25);
-    }
-    .btn-outline:hover {
-      border-color: rgba(255,255,255,0.5);
-      background: rgba(255,255,255,0.05);
     }
     .btn-navy {
       background: var(--navy);
@@ -391,33 +306,56 @@
     }
 
     /* ===== ABOUT ===== */
-    .about { background: var(--cream); }
+    .about {
+      background: #FFFFFF;
+      padding: 4.5rem 0 5rem;
+      border-bottom: 1px solid var(--gray-200);
+    }
     .about-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 4rem;
+      gap: 3.5rem;
       align-items: center;
     }
     .about-img {
-      border-radius: 16px;
+      border-radius: 12px;
       overflow: hidden;
-      box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
     }
     .about-img img {
       width: 100%;
-      height: 420px;
+      height: auto;
+      min-height: 360px;
       object-fit: cover;
+      display: block;
+    }
+    .about .section-label {
+      color: #60A18B;
+      margin-bottom: 0.65rem;
+    }
+    .about-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.85rem, 3.5vw, 2.65rem);
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.2;
+      margin-bottom: 1.35rem;
     }
     .about p {
       color: var(--text-light);
       font-size: 1.05rem;
-      line-height: 1.75;
-      margin-bottom: 1.25rem;
+      line-height: 1.8;
+      margin-bottom: 1.15rem;
+    }
+    .about .btn-navy {
+      margin-top: 0.35rem;
     }
 
     @media (max-width: 768px) {
+      .about { padding: 3.5rem 0 4rem; }
       .about-grid { grid-template-columns: 1fr; gap: 2rem; }
-      .about-img img { height: 300px; }
+      .about-img { order: -1; }
+      .about-img img { min-height: 260px; }
     }
 
     /* ===== WHY CHOOSE US ===== */
@@ -829,21 +767,20 @@
     <a href="/contact.html" class="btn btn-gold" style="text-align:center;margin-top:0.5rem;" onclick="this.parentElement.classList.remove('open')">REQUEST AN ESTIMATE</a>
   </div>
 
-  <!-- HERO -->
-  <section class="hero">
+  <!-- ABOUT -->
+  <section class="about" id="about">
     <div class="container">
-      <div class="hero-grid">
-        <div>
-          <div class="hero-badge">Fully Licensed & Insured · Chester County PA</div>
-          <h1>Your Trusted Kitchen & <span>Bathroom Remodel</span> Contractors</h1>
-          <p>At Jacoby Home Improvements, we specialize in crafting beautiful, functional kitchens and bathrooms that Chester County homeowners can be proud of. Expert craftsmanship, custom designs, and a commitment to doing it right.</p>
-          <div class="hero-actions">
-            <a href="/contact.html" class="btn btn-gold">Get a Free Estimate →</a>
-            <a href="tel:+14849479097" class="btn btn-outline">Call (484) 947-9097</a>
-          </div>
+      <div class="about-grid">
+        <div class="about-img">
+          <img src="images/Jacoby-Home-About.webp" alt="Kevin Jacoby - Founder of Jacoby Home Improvements" />
         </div>
-        <div class="hero-img">
-          <img src="images/Jacoby-Home-About.webp" alt="Kitchen remodel by Jacoby Home Improvements in West Chester PA" />
+        <div>
+          <div class="section-label">About Us</div>
+          <h1 class="about-title">Your Trusted Kitchen & Bathroom Remodel Contractors in West Chester</h1>
+          <p>At Jacoby Home Improvements LLC, we are passionate about crafting beautiful, functional kitchens and bathrooms that homeowners in Chester County, PA, can be proud of. Founded on a dream and a vision to build something extraordinary, our company combines years of remodeling expertise with a client-centered approach. We specialize in creating spaces that reflect your unique style while enhancing the comfort and functionality of your home.</p>
+          <p>When he's not transforming homes, our founder Kevin, a devoted husband and proud father of two, cherishes spending quality time with his family. His dedication to both his craft and his loved ones is the heart of Jacoby Home Improvements.</p>
+          <p>Our commitment to professionalism, attention to detail, and the use of high-quality materials ensures that every project we take on is completed to the highest standards.</p>
+          <a href="/contact.html" class="btn btn-navy">Get Started →</a>
         </div>
       </div>
     </div>
@@ -860,25 +797,6 @@
       </div>
     </div>
   </div>
-
-  <!-- ABOUT -->
-  <section class="about" id="about">
-    <div class="container">
-      <div class="about-grid">
-        <div class="about-img">
-          <img src="images/Jacoby-Home-About.webp" alt="Kevin Jacoby - Founder of Jacoby Home Improvements" />
-        </div>
-        <div>
-          <div class="section-label">About Us</div>
-          <h2 class="section-title">Built on Craftsmanship, Driven by Family</h2>
-          <p>At Jacoby Home Improvements LLC, we are passionate about crafting beautiful, functional kitchens and bathrooms that homeowners in Chester County, PA, can be proud of. Founded on a dream and a vision to build something extraordinary, our company combines years of remodeling expertise with a client-centered approach.</p>
-          <p>When he's not transforming homes, our founder Kevin, a devoted husband and proud father of two, cherishes spending quality time with his family. His dedication to both his craft and his loved ones is the heart of Jacoby Home Improvements.</p>
-          <p>Our commitment to professionalism, attention to detail, and the use of high-quality materials ensures that every project we take on is completed to the highest standards.</p>
-          <a href="/contact.html" class="btn btn-navy" style="margin-top:0.5rem;">Get Started →</a>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- WHY CHOOSE US -->
   <section class="why-us">
