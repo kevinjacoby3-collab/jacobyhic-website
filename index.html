@@ -13,7 +13,7 @@
   <meta property="og:url" content="https://jacobyhic.com/" />
   <meta property="og:type" content="website" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     /* ===== RESET & BASE ===== */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -35,8 +35,8 @@
       --gray-700: #4A4845;
       --text: #2D2B28;
       --text-light: #6B6966;
-      --font-display: 'Playfair Display', Georgia, serif;
-      --font-body: 'Source Sans 3', -apple-system, sans-serif;
+      --font-display: 'Raleway', 'Helvetica Neue', sans-serif;
+      --font-body: 'Open Sans', -apple-system, sans-serif;
     }
 
     body {
@@ -641,7 +641,32 @@
     /* ===== UTILITIES ===== */
     .text-center { text-align: center; }
     .mx-auto { margin-left: auto; margin-right: auto; }
-  </style>
+  
+    .nav-dropdown { position: relative; }
+    .nav-dropdown-toggle {
+      cursor: pointer; color: rgba(255,255,255,0.85); font-size: 0.95rem; font-weight: 500;
+      padding: 0.5rem 1rem; border-radius: 6px; transition: all 0.2s; display: inline-flex;
+      align-items: center; gap: 0.25rem; background: none; border: none; font-family: inherit; line-height: inherit;
+    }
+    .nav-dropdown-toggle:hover, .nav-dropdown:focus-within .nav-dropdown-toggle {
+      color: #fff; background: rgba(255,255,255,0.08);
+    }
+    .nav-dropdown-menu {
+      display: none; position: absolute; top: 100%; left: 0; min-width: 230px; padding: 0.4rem 0;
+      background: var(--navy-dark); border-radius: 8px; box-shadow: 0 12px 32px rgba(0,0,0,0.25);
+      z-index: 200; flex-direction: column;
+    }
+    .nav-dropdown:hover .nav-dropdown-menu, .nav-dropdown:focus-within .nav-dropdown-menu { display: flex; }
+    .nav-dropdown-menu a { color: rgba(255,255,255,0.9) !important; padding: 0.55rem 1.1rem; border-radius: 0; font-weight: 500; }
+    .nav-dropdown-menu a:hover { background: rgba(255,255,255,0.08); }
+    .nav-dropdown-menu a.active { color: #fff !important; background: rgba(255,255,255,0.1); }
+    .nav-mobile-group-label {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      color: rgba(255,255,255,0.45); padding: 0.6rem 1rem 0.2rem; display: block;
+    }
+    .nav-mobile-menu a.active { color: #fff; background: rgba(255,255,255,0.08); }
+
+</style>
 </head>
 <body>
 
@@ -649,7 +674,7 @@
   <div class="top-bar">
     <div class="container">
       <span>Serving West Chester & Chester County, PA</span>
-      <span>Call <a href="tel:+14849479097">(484) 947-9097</a> · <a href="/cdn-cgi/l/email-protection#cca6adafa3aeb5a4a3a1a9a5a1bcbea3baa9a1a9a2b8bf8caba1ada5a0e2afa3a1">Email Us</a></span>
+      <span>Call <a href="tel:+14849479097">(484) 947-9097</a> · <a href="mailto:jacobyhomeimprovements@gmail.com">Email Us</a></span>
     </div>
   </div>
 
@@ -660,9 +685,14 @@
         <img src="images/Jacoby-MainLogo.png" alt="Jacoby Home Improvements" />
       </a>
       <div class="nav-links">
-        <a href="/kitchen-remodeling.html">Kitchen Remodeling</a>
-        <a href="/bathroom-remodeling.html">Bathroom Remodeling</a>
-        <a href="/portfolio.html">Portfolio</a>
+        <div class="nav-dropdown">
+          <button type="button" class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">Services</button>
+          <div class="nav-dropdown-menu" role="menu">
+            <a href="/kitchen-remodeling.html" role="menuitem">Kitchen Remodeling</a>
+            <a href="/bathroom-remodeling.html" role="menuitem">Bathroom Remodeling</a>
+            <a href="/portfolio.html" role="menuitem">Portfolio</a>
+          </div>
+        </div>
         <a href="/blog/">Blog</a>
         <a href="/contact.html" class="nav-cta">Free Estimate</a>
       </div>
@@ -672,6 +702,7 @@
     </div>
   </nav>
   <div class="nav-mobile-menu">
+    <span class="nav-mobile-group-label">Services</span>
     <a href="/kitchen-remodeling.html" onclick="this.parentElement.classList.remove('open')">Kitchen Remodeling</a>
     <a href="/bathroom-remodeling.html" onclick="this.parentElement.classList.remove('open')">Bathroom Remodeling</a>
     <a href="/portfolio.html" onclick="this.parentElement.classList.remove('open')">Portfolio</a>
@@ -888,7 +919,7 @@
           <div class="footer-title">Contact</div>
           <div class="footer-links footer-contact">
             <a href="tel:+14849479097">(484) 947-9097</a>
-            <a href="/cdn-cgi/l/email-protection#93f9f2f0fcf1eafbfcfef6fafee3e1fce5f6fef6fde7e0d3f4fef2faffbdf0fcfe">Email Us</a>
+            <a href="mailto:jacobyhomeimprovements@gmail.com">Email Us</a>
             <a href="https://maps.app.goo.gl/SaB46UcR3EDMEUkH6" target="_blank" rel="noopener">1642 Suzanne Drive<br>West Chester, PA 19380</a>
           </div>
         </div>
@@ -904,7 +935,7 @@
   </footer>
 
   <!-- Facebook Pixel -->
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  <script>
     !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
     n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
     n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
