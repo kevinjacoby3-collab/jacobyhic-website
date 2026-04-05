@@ -10,10 +10,10 @@ ROOT = Path(__file__).resolve().parents[1]
 TOP_MIN = (
     ".top-bar{font-size:0.85rem;padding:0;border-bottom:1px solid #2A4545}"
     ".top-bar-split{display:flex;width:100%;align-items:stretch;flex-wrap:wrap}"
-    ".top-bar-left{flex:1 1 50%;min-width:min(100%,280px);background:#3D5A5A;color:#FFFFFF;padding:0.65rem 1.25rem;display:flex;align-items:center;justify-content:center;text-align:center;line-height:1.5}"
+    ".top-bar-left{flex:1 1 50%;min-width:min(100%,280px);background:#71a28f;color:#FFFFFF;padding:0.65rem 1.25rem;display:flex;align-items:center;justify-content:center;text-align:center;line-height:1.5}"
     ".top-bar-left a{color:#FFFFFF;font-weight:600;text-decoration:underline}"
     ".top-bar-left a:hover{color:#E8F0ED}"
-    ".top-bar-right{flex:1 1 50%;min-width:min(100%,280px);background:#E8F0ED;color:#60A18B;padding:0.65rem 1.25rem;display:flex;align-items:center;justify-content:center;text-align:center;line-height:1.5}"
+    ".top-bar-right{flex:1 1 50%;min-width:min(100%,280px);background:#efefef;color:#60A18B;padding:0.65rem 1.25rem;display:flex;align-items:center;justify-content:center;text-align:center;line-height:1.5}"
     ".top-bar .serving-text{color:#60A18B;font-weight:700}"
 )
 
@@ -309,7 +309,7 @@ def patch_index_css(t: str) -> str:
     .top-bar-left {
       flex: 1 1 50%;
       min-width: min(100%, 280px);
-      background: #3D5A5A;
+      background: #71a28f;
       color: #FFFFFF;
       padding: 0.65rem 1.25rem;
       display: flex;
@@ -329,7 +329,7 @@ def patch_index_css(t: str) -> str:
     .top-bar-right {
       flex: 1 1 50%;
       min-width: min(100%, 280px);
-      background: #E8F0ED;
+      background: #efefef;
       color: #60A18B;
       padding: 0.65rem 1.25rem;
       display: flex;
