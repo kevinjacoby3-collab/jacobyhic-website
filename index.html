@@ -811,6 +811,27 @@
     /* ===== UTILITIES ===== */
     .text-center { text-align: center; }
     .mx-auto { margin-left: auto; margin-right: auto; }
+
+    /* ===== HOME HERO ===== */
+    .home-hero {
+      width: 100%;
+      height: 500px;
+      background: url('images/Jacoby-KitchenRemodeling-2.webp') center center / cover no-repeat;
+      position: relative;
+    }
+    .home-hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0,0,0,0.15);
+    }
+    @media (max-width: 768px) {
+      .home-hero {
+        height: 300px;
+      }
+    }
 </style>
 </head>
 <body>
@@ -867,6 +888,10 @@
     <a href="/contact.html">Contact Us</a>
     <a href="/contact.html" class="btn btn-gold" style="text-align:center;margin-top:0.5rem;" onclick="this.parentElement.classList.remove('open')">REQUEST AN ESTIMATE</a>
   </div>
+
+  <section class="home-hero">
+    <div class="home-hero-overlay"></div>
+  </section>
 
   <!-- ABOUT -->
   <section class="about" id="about">
