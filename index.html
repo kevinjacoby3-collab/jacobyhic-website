@@ -391,9 +391,9 @@
     }
 
     /* ===== SERVICES ===== */
-    .services { background: var(--navy); color: #fff; }
-    .services .section-title { color: #fff; }
-    .services .section-subtitle { color: rgba(255,255,255,0.6); }
+    .services { background: #FFFFFF; color: #333333; }
+    .services .section-title { color: #1B2A4A; }
+    .services .section-subtitle { color: #333333; }
     .service-cards {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -401,15 +401,16 @@
       margin-top: 3rem;
     }
     .service-card {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
+      background: var(--cream);
+      border: 1px solid var(--gray-200);
       border-radius: 16px;
       overflow: hidden;
       transition: all 0.3s;
     }
     .service-card:hover {
-      border-color: rgba(201,168,76,0.3);
+      border-color: rgba(96,161,139,0.45);
       transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(27,42,74,0.08);
     }
     .service-card-img {
       height: 280px;
@@ -431,10 +432,11 @@
       font-family: var(--font-display);
       font-size: 1.4rem;
       font-weight: 700;
+      color: #1B2A4A;
       margin-bottom: 0.75rem;
     }
     .service-card p {
-      color: rgba(255,255,255,0.65);
+      color: #333333;
       font-size: 0.95rem;
       line-height: 1.7;
       margin-bottom: 1.5rem;
@@ -444,7 +446,7 @@
       margin-bottom: 1.5rem;
     }
     .service-list li {
-      color: rgba(255,255,255,0.75);
+      color: #333333;
       font-size: 0.9rem;
       padding: 0.35rem 0;
       padding-left: 1.5rem;
@@ -509,25 +511,25 @@
       margin-top: 2rem;
     }
     .area-tag {
-      background: var(--cream);
-      border: 1px solid var(--gray-200);
+      background: #60A18B;
+      border: 1px solid #60A18B;
       border-radius: 8px;
       padding: 0.65rem 1rem;
       font-size: 0.9rem;
       font-weight: 500;
-      color: var(--navy);
+      color: #FFFFFF;
       text-align: center;
       transition: all 0.2s;
     }
     .area-tag:hover, .area-tag.primary {
-      background: var(--navy);
-      color: #fff;
-      border-color: var(--navy);
+      background: #4E8A75;
+      color: #FFFFFF;
+      border-color: #4E8A75;
     }
 
     /* ===== CTA BANNER ===== */
     .cta-banner {
-      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-dark) 100%);
+      background: #60A18B;
       padding: 4rem 0;
       text-align: center;
       position: relative;
@@ -549,14 +551,24 @@
       margin-bottom: 0.75rem;
     }
     .cta-banner p {
-      color: rgba(255,255,255,0.6);
+      color: rgba(255,255,255,0.85);
       font-size: 1.05rem;
       margin-bottom: 2rem;
       max-width: 500px;
       margin-left: auto;
       margin-right: auto;
     }
-    .cta-banner .btn-gold { font-size: 1.05rem; padding: 1rem 2.5rem; }
+    .cta-banner .btn-gold {
+      font-size: 1.05rem;
+      padding: 1rem 2.5rem;
+      background: #FFFFFF;
+      color: #1B2A4A;
+    }
+    .cta-banner .btn-gold:hover {
+      background: #F7F7F5;
+      color: #1B2A4A;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    }
 
     /* ===== TRUST BAR ===== */
     .trust-bar {
@@ -1010,7 +1022,7 @@
         </div>
         <div class="service-card">
           <div class="service-card-img">
-            <img src="images/drywall-installation-basement-west-chester.jpg" alt="Drywall repair and installation West Chester PA" />
+            <img src="images/drywall-installation-basement-west-chester.jpg" alt="Drywall installation in West Chester basement" />
           </div>
           <div class="service-card-body">
             <h3>Small Jobs &amp; Home Repairs</h3>
